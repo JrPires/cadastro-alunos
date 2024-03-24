@@ -1,0 +1,29 @@
+<?php
+$this->title = "Alunos";
+$this->headTitle($this->title);
+?>
+<p><a href="<?php echo $this->url(array('controller'=>'aluno',
+        'action'=>'add'));?>">Adicionar novo aluno</a></p>
+<p><a href="<?php echo $this->url(array('controller'=>'disciplina',
+        'action'=>'add'));?>">Adicionar nova disciplina</a></p>
+<p><a href="<?php echo $this->url(array('controller'=>'matricula',
+        'action'=>'add'));?>">Adicionar Matricula</a></p>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($this->alunos as $aluno) : ?>
+        <tr>
+            <td><?php echo $this->escape($aluno->nome);?></td>
+            <td><?php echo $this->escape($aluno->email);?></td>
+            <td>
+                <a href="<?php echo $this->url(array('controller'=>'aluno',
+                    'action'=>'editar', 'id'=>$aluno->id));?>">Editar</a>
+                <a href="<?php echo $this->url(array('controller'=>'aluno',
+                    'action'=>'excluir', 'id'=>$aluno->id));?>">Excluir</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
